@@ -32,7 +32,7 @@ client.once("ready", () => {
   console.log("start");
 });
 
-client.on("messageCreate", async (message: Message) => {
+client.on("messageCreate", async (message) => {
   if (message.author.bot) {
     return;
   }

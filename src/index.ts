@@ -44,6 +44,19 @@ client.on("messageCreate", async (message) => {
   if (!channel?.isText()) {
     return;
   }
+  const embed = new MessageEmbed()
+    .setAuthor({
+      name:
+        message.author.username + `（${message.member?.displayName ?? ""}）`,
+      iconURL: message.author.avatarURL() ?? undefined,
+    })
+    .setDescription(message.content);
+  for (const url of message.attachments.map((attachment) => attachment.url)) {
+    embed.addField("画像", url);
+  }
+
+  await channel.send({ embeds: [embed] });
+});
 
   await channel.send({ embeds: [buildEmbedMessage(message)] });
 });

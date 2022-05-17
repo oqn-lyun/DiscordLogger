@@ -79,4 +79,30 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
   await channel.send({ embeds: [embed] });
 });
 
+client.on("messageDelete", async (message) => {
+  if (!message.author || message.author.bot) {
+    return;
+  }
+  if (message.channelId !== config.loggingId) {
+    return;
+  }
+
+  const channel = client.channels.cache.get(config.outputId);
+  if (!channel?.isText()) {
+    return;
+  }
+  const embed = new MessageEmbed()
+    .setAuthor({
+      name:
+        message.author.username + `（${message.member?.displayName ?? ""}）`,
+      iconURL: message.author.avatarURL() ?? undefined,
+    })
+    .addField("削除", message.content ?? "");
+  for (const url of message.attachments.map((attachment) => attachment.url)) {
+    embed.addField("画像", url);
+  }
+
+  await channel.send({ embeds: [embed] });
+});
+
 client.login(config.token);

@@ -12,6 +12,9 @@ const buildEmbedMessage = (message: Message): MessageEmbed => {
       iconURL: message.author.avatarURL() ?? undefined,
     })
     .setDescription(message.content);
+  for (const url of message.attachments.map((attachment) => attachment.url)) {
+    embed.addField("画像", url);
+  }
   return embed;
 };
 

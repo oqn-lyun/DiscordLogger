@@ -38,7 +38,7 @@ export const getConfig = (): Config => {
     configParser.set(discordSection, outputIdKey, "");
     configParser.write(configFilename);
     console.log(`${configFilename}を生成しました`);
-    console.log(`${configFilename}をに設定を書いてください`);
+    console.log(`${configFilename}に設定を書いてください`);
     printHelpMessage();
     process.exit();
   }

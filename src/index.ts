@@ -15,7 +15,8 @@ client.once("ready", () => {
     console.log("出力先チャンネルが存在しません");
     process.exit();
   }
-  console.log("start");
+  console.log("ロギング開始");
+  console.log("終了するにはCtrlキー + cキー");
 });
 
 client.on("messageCreate", async (message) => {

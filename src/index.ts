@@ -16,7 +16,7 @@ client.once("ready", () => {
     process.exit();
   }
   console.log("ロギング開始");
-  console.log("終了するにはCtrlキー + cキー");
+  console.log("終了するにはCtrlキー + cキーを押してください");
 });
 
 client.on("messageCreate", async (message) => {
